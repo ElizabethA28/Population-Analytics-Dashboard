@@ -28,9 +28,8 @@ if uploaded:
     # Create tabs
     tab1, tab2, tab3 = st.tabs(["Poverty vs Millionaires", "Millionaire Density Map", "Poverty Rate"])
 
-    # --------------------------
+    
     # Tab 1: Poverty vs Millionaires
-    # --------------------------
     with tab1:
         st.subheader("Poverty vs Millionaires by Selected States")
         if len(selected_states) < 5:
@@ -52,16 +51,10 @@ if uploaded:
 
             st.pyplot(plt.gcf())
 
-            st.markdown(
-                "> **Interpretation:** Wealth distribution varies significantly across states. "
-                "Some states show high millionaire counts alongside substantial poverty populations, "
-                "highlighting economic inequality. Smaller states may have lower absolute numbers but "
-                "still carry meaningful poverty burdens relative to their population."
-            )
+        
 
-    # --------------------------
+    
     # Tab 2: Millionaire Density Map
-    # --------------------------
     with tab2:
         st.subheader("Millionaire Density by U.S. State")
         df["millionaire_density"] = df["millionaires"] / df["population"]
@@ -80,15 +73,11 @@ if uploaded:
         )
         st.plotly_chart(fig_map, use_container_width=True)
 
-        st.markdown(
-            "> **Interpretation:** Higher millionaire density tends to concentrate in coastal and metro-centric states "
-            "with strong finance and tech sectors. Interior states often show lower density overall but may include "
-            "pockets of wealth tied to energy or manufacturing hubs."
-        )
+    
+    
 
-    # --------------------------
+    
     # Tab 3: Poverty Rate
-    # --------------------------
     with tab3:
         st.subheader("Poverty Rate Across States")
         df["poverty_rate"] = df["poverty"] / df["population"]
@@ -104,10 +93,6 @@ if uploaded:
 
         st.pyplot(plt.gcf())
 
-        st.markdown(
-            "> **Interpretation:** States at the top of the chart carry the highest poverty burden relative to population, "
-            "while those at the bottom exhibit lower rates. This highlights structural differences in economies and social supports."
-        )
-
+        
 else:
     st.warning("Please upload the dataset to continue.")
